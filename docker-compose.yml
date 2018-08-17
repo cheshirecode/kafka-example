@@ -34,7 +34,7 @@ services:
       CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: broker:9092
       CONFLUENT_METRICS_REPORTER_ZOOKEEPER_CONNECT: zookeeper:2181
       CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 1
-      CONFLUENT_METRICS_ENABLE: 'false'
+      CONFLUENT_METRICS_ENABLE: 'true'
       # CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
     extra_hosts:
       - "moby:127.0.0.1"
@@ -65,6 +65,7 @@ services:
       - zookeeper
       - broker
       - schema-registry
+      - elasticsearch
     ports:
       - "8083:8083"
       - "8084:8084"
@@ -178,10 +179,33 @@ services:
     build: ./cli
     container_name: kx-cli
     depends_on:
-      - rest-proxy
       - zookeeper
       - broker
       - schema-registry
       - connect
+      - rest-proxy
+
+  elasticsearch:
+    # build: ./elasticsearch
+    image: elasticsearch:5.4.0-alpine
+    container_name: kx-elasticsearch
+    restart: unless-stopped
+    environment:
+      - discovery.type=single-node
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+
+  kibana:
+    image: cheshirecode/kafka-example-kibana
+    build: ./kibana
+    container_name: kx-kibana
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+    environment:
+      KIBANA_ELASTICSEARCH_URL: "http://elasticsearch:9200"
+
 volumes:
     mi2: {}

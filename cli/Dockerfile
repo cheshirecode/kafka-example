@@ -1,9 +1,7 @@
-FROM alpine
-WORKDIR /tmp/
-COPY . .
-RUN apk add --update curl && \
-    rm -rf /var/cache/apk/* && \
-    chmod +x *.sh
+FROM cheshirecode/alpine-runit
 
-CMD ./user-gen.sh && \
-    tail -f /dev/null
+COPY . /tmp/
+WORKDIR /tmp
+CMD chmod +x *.sh && \
+  ./user-gen.sh && \
+  tail -f /dev/null

@@ -5,7 +5,7 @@
 
     "_comment": "--- Elasticsearch-specific config ---",
     "_comment": "Elasticsearch server address",
-    "connection.url": "http://192.168.1.154:9200",
+    "connection.url": "http://elasticsearch:9200",
 
       "type.name": "type.name=kafka-connect",
 

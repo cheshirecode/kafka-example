@@ -1,15 +1,17 @@
 #!/usr/bin/env sh
 attempt_counter=0
 max_attempts=5
+sleep_duration=5
 until $(curl -s --output /dev/null --head --fail http://rest-proxy:8082); do
   if [ ${attempt_counter} -eq ${max_attempts} ];
   then
-    echo "Max attempts reached!"
+    echo "Max attempts reached! http://rest-proxy:8082 isn't up or reachable."
     is_service_up=1
+    break
   else
     printf '.'
     attempt_counter=$((attempt_counter+1))
-    sleep 3
+    sleep $sleep_duration
   fi
 done
 
