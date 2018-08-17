@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
-cd /tmp || exit
-nohup python -m SimpleHTTPServer 8084 &>/dev/null &
-cd - || exit
+# cd /tmp || exit
+# nohup python -m SimpleHTTPServer 8084 &>/dev/null &
+# cd - || exit
+echo "Launching Kafka Connect..."
 /etc/confluent/docker/run
 
+echo "Waiting for service to be up..."
 attempt_counter=0
 max_attempts=5
 sleep_duration=5
@@ -22,13 +24,7 @@ done
 
 if [ -z ${is_service_up+x} ];
 then
-  #
-  curl -X POST -H "Content-Type: application/json" \
-      --data @kafka-connect-elasticsearch-sink.json \
-      http://connect:8083/connectors
-  curl -X POST -H "Content-Type: application/json" \
-      --data @kafka-connect-file-sink.json \
-      http://connect:8083/connectors
-  #
+  echo "Adding connectors..."
+  ./add-connectors.sh
 fi
 tail -f /dev/null

@@ -1,8 +1,9 @@
 FROM confluentinc/cp-kafka-connect:5.0.0
 
 WORKDIR /etc/confluent/docker
-COPY . ./
+COPY *.* ./
 WORKDIR /usr/share/java
+COPY plugins ./
 # we only want elasticsearch connector for now
 RUN du -sh . && \
   find . -maxdepth 1 -type d -name "kafka-connect*" -and ! -name "*elastic*" \
@@ -11,4 +12,5 @@ RUN du -sh . && \
   du -sh . && \
   chmod +x /etc/confluent/docker/*.sh
 
-CMD /etc/confluent/docker/run.sh
+WORKDIR /etc/confluent/docker
+CMD ./run.sh
