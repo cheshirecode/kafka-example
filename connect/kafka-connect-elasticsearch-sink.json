@@ -1,0 +1,15 @@
+{
+  "name": "es-sink-foobar",
+  "config": {
+    "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
+
+    "_comment": "--- Elasticsearch-specific config ---",
+    "_comment": "Elasticsearch server address",
+    "connection.url": "http://192.168.1.154:9200",
+
+      "type.name": "type.name=kafka-connect",
+
+    "_comment": "Which topic to stream data from into Elasticsearch",
+    "topics": "users,tweets"
+  }
+}

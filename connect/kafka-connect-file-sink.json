@@ -1,0 +1,14 @@
+{
+	"name": "file-sink-foobar",
+	"config": {
+		"_comment": "Stream data to file from Kafka topic using FileStreamSinkConnector",
+		"connector.class": "FileStreamSink",
+
+		"_comment": "--- File specific configuration here ---",
+		"_comment": "Filename to which data should be written",
+		"file": "/tmp/kafka-file-sink.txt",
+		  
+		"_comment": "Which topic(s) to write data from",
+		"topics": "users,tweets"
+	}
+}

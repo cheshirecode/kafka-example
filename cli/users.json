@@ -1,0 +1,24 @@
+{  
+    "key_schema":"{\"name\":\"user_id\"  ,\"type\": \"int\"   }",
+    "value_schema":"{\"type\": \"record\", \"name\": \"User\", \"fields\": [{\"name\": \"name\", \"type\": \"string\"}]}",
+    "records":[  
+      {  
+        "key":1,
+        "value":{  
+          "name":"testUser"
+        }
+      },
+      {  
+        "key":2,
+        "value":{  
+          "name":"testUser2"
+        }
+      },
+      {  
+        "key":5,
+        "value":{  
+          "name":"testUser5"
+        }
+      }
+    ]
+  }
