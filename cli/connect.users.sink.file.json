@@ -1,5 +1,5 @@
 {
-	"name": "file-sink-foobar",
+	"name": "connect.users.source.elasticsearch",
 	"config": {
 		"_comment": "Stream data to file from Kafka topic using FileStreamSinkConnector",
 		"connector.class": "FileStreamSink",

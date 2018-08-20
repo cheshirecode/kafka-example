@@ -1,0 +1,13 @@
+{
+	"name": "connect.events.sink.file",
+	"config": {
+    "connector.class": "FileStreamSink",
+    "file": "/tmp/kafka-file-sink.txt",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "key.converter.schemas.enable": "false",
+    "key.ignore": "true",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "false",
+    "topics": "generated.events"
+	}
+}

@@ -1,5 +1,5 @@
 {
-  "name": "connect.source.datagen",
+  "name": "connect.events.source.datagen",
   "config": {
     "connector.class": "com.github.xushiyan.kafka.connect.datagen.performance.DatagenConnector",
     "tasks.max": "1",

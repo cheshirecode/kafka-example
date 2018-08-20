@@ -3,21 +3,21 @@
     "value_schema":"{\"type\": \"record\", \"name\": \"User\", \"fields\": [{\"name\": \"name\", \"type\": \"string\"}]}",
     "records":[  
       {  
-        "key":1,
+        "key":6,
         "value":{  
-          "name":"testUser"
+          "name":"testUser6"
         }
       },
       {  
-        "key":2,
+        "key":8,
         "value":{  
-          "name":"testUser2"
+          "name":"testUser8"
         }
       },
       {  
-        "key":5,
+        "key":9,
         "value":{  
-          "name":"testUser5"
+          "name":"testUser9"
         }
       }
     ]

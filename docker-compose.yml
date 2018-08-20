@@ -195,7 +195,6 @@ services:
       - rest-proxy
 
   elasticsearch:
-    # build: ./elasticsearch
     image: elasticsearch:5.4.0-alpine
     container_name: kx-elasticsearch
     restart: unless-stopped
@@ -229,7 +228,7 @@ services:
       KAFKA_REST_PROXY_URL: 'http://rest-proxy:8082'
       PROXY: "true"
 
-  connect-ui:
+  connect-ui:  
     image: landoop/kafka-connect-ui:latest
     container_name: kx-connect-ui
     depends_on:
