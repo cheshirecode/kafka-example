@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
+# clean up all topics from datagen container and clear ZK schema
 ZK=zookeeper:2181
-BOOTSTRAP_SERVER=broker:9092
+# BOOTSTRAP_SERVER=broker:9092
 kafka-topics --delete --zookeeper "$ZK" --topic generator-text
 kafka-topics --delete --zookeeper "$ZK" --topic generator-types
 kafka-topics --delete --zookeeper "$ZK" --topic generator-types-upsert
@@ -14,4 +15,4 @@ kafka-topics --zookeeper "$ZK" --list | grep "generator-"
 
 kafka-topics --delete --zookeeper "$ZK" --topic _schemas
 kafka-run-class kafka.tools.ZooKeeperMainWrapper -server "$ZK" delete /schema_registry/schema_id_counter
-kafka-avro-console-consumer --bootstrap-server "$BOOTSTRAP_SERVER" --topic _schemas --from-beginning
+# kafka-avro-console-consumer --bootstrap-server "$BOOTSTRAP_SERVER" --topic _schemas --from-beginning

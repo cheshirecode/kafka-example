@@ -12,4 +12,5 @@ COPY --from=0 /tmp/landoop-avro-generator/target /tmp/landoop-avro-generator/
 COPY . .
 WORKDIR /tmp/landoop-avro-generator
 
-CMD ./landoop-avro-generator $MESSAGES $PARTITIONS $THROTTLE
+CMD ./landoop-avro-generator $MESSAGES $PARTITIONS $THROTTLE && \
+    tail -f /dev/null

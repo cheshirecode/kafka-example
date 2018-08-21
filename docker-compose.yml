@@ -248,9 +248,12 @@ services:
       - broker
       - schema-registry
     environment:
-      MESSAGES: ${MESSAGES:-1}
+      # how many messages
+      MESSAGES: ${MESSAGES:-100}
+      # how many partitions
       PARTITIONS: ${PARTITIONS:-1}
-      THROTTLE: ${THROTTLE:-1000}
+      # how many to throttle
+      # THROTTLE: ${THROTTLE:-1000}
       BROKERS: 'broker:9092'
       ZK: 'zookeeper:2181'
       SCHEMA_REGISTRY: 'http://schema-registry:8081'
