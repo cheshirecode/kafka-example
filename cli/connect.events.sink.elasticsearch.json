@@ -6,6 +6,7 @@
     "key.converter": "org.apache.kafka.connect.storage.StringConverter",
     "key.converter.schemas.enable": "false",
     "key.ignore": "true",
+    "schema.ignore": "true",
     "value.converter": "org.apache.kafka.connect.json.JsonConverter",
     "value.converter.schemas.enable": "false",
     "type.name": "type.name=kafka-connect",

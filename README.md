@@ -24,6 +24,11 @@ docker exec -t kx-connect tail -f /tmp/kafka-file-sink.txt
 docker exec -t kx-connect kafka-topics --zookeeper zookeeper:2181 --list
 ```
 
+### Delete a topic
+```
+docker exec -t kx-connect kafka-topics --zookeeper zookeeper:2181 --delete --topic generator-sql
+```
+
 ### Get Docker host IP
 `ifconfig | grep -e "inet "` 
 
