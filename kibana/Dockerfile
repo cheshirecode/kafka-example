@@ -1,5 +1,7 @@
 FROM alpine:3.6
 
+# modified from https://github.com/blacktop/docker-kibana-alpine/blob/master/5.4/Dockerfile
+LABEL maintainer "https://github.com/blacktop"
 ENV KIBANA_VERSION 5.4.0
 
 ENV DOWNLOAD_URL "https://artifacts.elastic.co/downloads/kibana"

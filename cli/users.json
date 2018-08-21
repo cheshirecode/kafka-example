@@ -3,9 +3,9 @@
     "value_schema":"{\"type\": \"record\", \"name\": \"User\", \"fields\": [{\"name\": \"name\", \"type\": \"string\"}]}",
     "records":[  
       {  
-        "key":6,
+        "key":7,
         "value":{  
-          "name":"testUser6"
+          "name":"testUser7"
         }
       },
       {  

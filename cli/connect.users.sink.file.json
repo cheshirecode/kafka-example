@@ -1,5 +1,5 @@
 {
-	"name": "connect.users.source.elasticsearch",
+	"name": "connect.users.sink.file",
 	"config": {
 		"_comment": "Stream data to file from Kafka topic using FileStreamSinkConnector",
 		"connector.class": "FileStreamSink",
