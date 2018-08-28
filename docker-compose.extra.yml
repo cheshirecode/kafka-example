@@ -1,0 +1,82 @@
+version: '3'
+services:
+  cli:
+    image: cheshirecode/kafka-example-cli
+    build: ./cli
+    container_name: kx-cli
+    depends_on:
+      - zookeeper
+      - broker
+      - schema-registry
+      - connect
+      - rest-proxy
+
+  elasticsearch:
+    image: elasticsearch:5.4.0-alpine
+    container_name: kx-elasticsearch
+    restart: unless-stopped
+    ports:
+      - 9200:9200
+    environment:
+      - discovery.type=single-node
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+
+  kibana:
+    image: cheshirecode/kafka-example-kibana
+    build: ./kibana
+    container_name: kx-kibana
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+    environment:
+      KIBANA_ELASTICSEARCH_URL: 'http://elasticsearch:9200'
+
+  topics-ui:
+    image: landoop/kafka-topics-ui:latest
+    container_name: kx-topics-ui
+    depends_on:
+      - zookeeper
+      - broker
+      - rest-proxy
+    ports:
+      - "8085:8000"
+    environment:
+      KAFKA_REST_PROXY_URL: 'http://rest-proxy:8082'
+      PROXY: "true"
+
+  connect-ui:  
+    image: landoop/kafka-connect-ui:latest
+    container_name: kx-connect-ui
+    depends_on:
+      - zookeeper
+      - broker
+      - connect
+    ports:
+      - "8086:8000"
+    environment:
+      CONNECT_URL: 'http://connect:8083'
+  
+  datagen:
+    image: cheshirecode/landoop-avro-generator:latest
+    build: ./datagen
+    container_name: kx-datagen
+    depends_on:
+      - zookeeper
+      - broker
+      - schema-registry
+    environment:
+      # how many messages
+      MESSAGES: ${MESSAGES:-100}
+      # how many partitions
+      PARTITIONS: ${PARTITIONS:-1}
+      # how many to throttle
+      THROTTLE: ${THROTTLE:-100}
+      BROKERS: 'broker:9092'
+      ZK: 'zookeeper:2181'
+      SCHEMA_REGISTRY: 'http://schema-registry:8081'
+
+volumes:
+    mi2: {}
