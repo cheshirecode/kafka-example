@@ -9,7 +9,8 @@
 
       "type.name": "type.name=kafka-connect",
 
-    "_comment": "Which topic to stream data from into Elasticsearch",
-    "topics": "users"
+    "_comment": "Which topic to stream data into Elasticsearch",
+    "topics": "users,generator-sales",
+    "key.ignore": "true"
   }
 }

@@ -197,6 +197,8 @@ services:
     image: elasticsearch:5.4.0-alpine
     container_name: kx-elasticsearch
     restart: unless-stopped
+    ports:
+      - 9200:9200
     environment:
       - discovery.type=single-node
       - cluster.name=docker-cluster
@@ -253,7 +255,7 @@ services:
       # how many partitions
       PARTITIONS: ${PARTITIONS:-1}
       # how many to throttle
-      # THROTTLE: ${THROTTLE:-1000}
+      THROTTLE: ${THROTTLE:-100}
       BROKERS: 'broker:9092'
       ZK: 'zookeeper:2181'
       SCHEMA_REGISTRY: 'http://schema-registry:8081'

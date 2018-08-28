@@ -2,7 +2,7 @@
 echo "Waiting for Kafka Connect to be up..."
 attempt_counter=0
 max_attempts=5
-sleep_duration=5
+sleep_duration=8
 until $(curl -s --output /dev/null --head --fail http://connect:8083); do
   if [ ${attempt_counter} -eq ${max_attempts} ];
   then
