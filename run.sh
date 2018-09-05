@@ -1,2 +1,3 @@
 #!/usr/bin/env sh
-docker-compose -f docker-compose.base.yml -f docker-compose.extra.yml "$@"
+ALL="-f docker-compose.base.yml -f docker-compose.extra.yml -f docker-compose.ui.yml"
+docker-compose $ALL "$@"

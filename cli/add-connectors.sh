@@ -7,7 +7,7 @@ until $(curl -s --output /dev/null --head --fail http://connect:8083); do
   if [ ${attempt_counter} -eq ${max_attempts} ];
   then
     echo "Max attempts reached! http://connect:8083 isn't up or reachable."
-    is_service_up=1
+    is_service_down=1
     break
   else
     printf '.'
@@ -16,9 +16,19 @@ until $(curl -s --output /dev/null --head --fail http://connect:8083); do
   fi
 done
 
-if [ -z ${is_service_up+x} ];
+if [ -z ${is_service_down+x} ];
 then
   echo "Adding connectors..."
+
+  curl -sS -X POST -H 'Content-Type:application/json' \
+      -H 'Accept:application/json' \
+      -d @connect.badips.sink.elasticsearch.json \
+      http://connect:8083/connectors
+
+  curl -sS -X POST -H 'Content-Type:application/json' \
+      -H 'Accept:application/json' \
+      -d @connect.badips.source.file.json \
+      http://connect:8083/connectors
 
   curl -sS -X POST -H 'Content-Type:application/json' \
       -H 'Accept:application/json' \

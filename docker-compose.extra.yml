@@ -33,31 +33,6 @@ services:
       - elasticsearch
     environment:
       KIBANA_ELASTICSEARCH_URL: 'http://elasticsearch:9200'
-
-  topics-ui:
-    image: landoop/kafka-topics-ui:latest
-    container_name: kx-topics-ui
-    depends_on:
-      - zookeeper
-      - broker
-      - rest-proxy
-    ports:
-      - "8085:8000"
-    environment:
-      KAFKA_REST_PROXY_URL: 'http://rest-proxy:8082'
-      PROXY: "true"
-
-  connect-ui:  
-    image: landoop/kafka-connect-ui:latest
-    container_name: kx-connect-ui
-    depends_on:
-      - zookeeper
-      - broker
-      - connect
-    ports:
-      - "8086:8000"
-    environment:
-      CONNECT_URL: 'http://connect:8083'
   
   datagen:
     image: cheshirecode/landoop-avro-generator:latest

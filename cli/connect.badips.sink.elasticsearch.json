@@ -1,0 +1,15 @@
+{
+  "name": "connect.badips.sink.elasticsearch",
+  "config": {
+    "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
+    "connection.url": "http://elasticsearch:9200",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "key.converter.schemas.enable": false,
+    "value.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter.schemas.enable": false,
+    "key.ignore": "true",
+    "schema.ignore": "true",
+    "type.name": "type.name=kafka-connect-badips",
+    "topics": "badips"
+  }
+}

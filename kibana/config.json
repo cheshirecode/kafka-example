@@ -1,0 +1,82 @@
+[
+  {
+    "_id": "0ed131f0-ab59-11e8-a53a-1d67f373f9f4",
+    "_type": "dashboard",
+    "_source": {
+      "title": "New Dashboard",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"col\":1,\"id\":\"01654750-ab53-11e8-a53a-1d67f373f9f4\",\"panelIndex\":1,\"row\":1,\"size_x\":6,\"size_y\":3,\"type\":\"visualization\"},{\"col\":7,\"id\":\"ffa75bf0-ab58-11e8-a53a-1d67f373f9f4\",\"panelIndex\":2,\"row\":1,\"size_x\":6,\"size_y\":3,\"type\":\"visualization\"},{\"col\":1,\"id\":\"c1806470-ab3a-11e8-a53a-1d67f373f9f4\",\"panelIndex\":3,\"row\":4,\"size_x\":6,\"size_y\":3,\"type\":\"visualization\"},{\"col\":7,\"id\":\"60e77260-ab59-11e8-9cb9-694fd4952d5d\",\"panelIndex\":4,\"row\":4,\"size_x\":6,\"size_y\":3,\"type\":\"visualization\"}]",
+      "optionsJSON": "{\"darkTheme\":false}",
+      "uiStateJSON": "{\"P-2\":{\"vis\":{\"defaultColors\":{\"0 - 35\":\"rgb(247,252,245)\",\"35 - 70\":\"rgb(199,233,192)\",\"70 - 105\":\"rgb(116,196,118)\",\"105 - 140\":\"rgb(35,139,69)\"}}},\"P-3\":{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}}",
+      "version": 1,
+      "timeRestore": true,
+      "timeTo": "now",
+      "timeFrom": "now-15m",
+      "refreshInterval": {
+        "display": "Off",
+        "pause": false,
+        "value": 0
+      },
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}],\"highlightAll\":true,\"version\":true}"
+      }
+    }
+  },
+  {
+    "_id": "01654750-ab53-11e8-a53a-1d67f373f9f4",
+    "_type": "visualization",
+    "_source": {
+      "title": "Sales - store count",
+      "visState": "{\"title\":\"Sales - store count\",\"type\":\"metric\",\"params\":{\"handleNoResults\":true,\"fontSize\":60},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"cardinality\",\"schema\":\"metric\",\"params\":{\"field\":\"storeCode.keyword\",\"customLabel\":\"Sales - store count\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"generator-sales\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "ffa75bf0-ab58-11e8-a53a-1d67f373f9f4",
+    "_type": "visualization",
+    "_source": {
+      "title": "Sales ID X Count",
+      "visState": "{\"title\":\"Sales ID X Count\",\"type\":\"heatmap\",\"params\":{\"addTooltip\":true,\"addLegend\":true,\"enableHover\":false,\"legendPosition\":\"right\",\"times\":[],\"colorsNumber\":4,\"colorSchema\":\"Greens\",\"setColorRange\":false,\"colorsRange\":[],\"invertColors\":false,\"percentageMode\":false,\"valueAxes\":[{\"show\":false,\"id\":\"ValueAxis-1\",\"type\":\"value\",\"scale\":{\"type\":\"linear\",\"defaultYExtents\":false},\"labels\":{\"show\":false,\"rotate\":0,\"color\":\"#555\"}}]},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"range\",\"schema\":\"segment\",\"params\":{\"field\":\"count\",\"ranges\":[{\"from\":0,\"to\":300},{\"from\":300,\"to\":null}],\"customLabel\":\"Item count\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"range\",\"schema\":\"group\",\"params\":{\"field\":\"itemID\",\"ranges\":[{\"from\":0,\"to\":30},{\"from\":31,\"to\":60},{\"from\":60}],\"customLabel\":\"ID\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"defaultColors\":{\"0 - 18\":\"rgb(247,252,245)\",\"18 - 35\":\"rgb(199,233,192)\",\"35 - 53\":\"rgb(116,196,118)\",\"53 - 70\":\"rgb(35,139,69)\"}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"generator-sales\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "60e77260-ab59-11e8-9cb9-694fd4952d5d",
+    "_type": "visualization",
+    "_source": {
+      "title": "sale order count",
+      "visState": "{\"title\":\"sale order count\",\"type\":\"pie\",\"params\":{\"addLegend\":true,\"addTooltip\":true,\"isDonut\":true,\"legendPosition\":\"right\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"range\",\"schema\":\"split\",\"params\":{\"field\":\"count\",\"ranges\":[{\"from\":0,\"to\":200},{\"from\":201,\"to\":400},{\"from\":401}],\"customLabel\":\"Sales order count\",\"row\":true}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"generator-sales\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "c1806470-ab3a-11e8-a53a-1d67f373f9f4",
+    "_type": "visualization",
+    "_source": {
+      "title": "event timestamp ranges",
+      "visState": "{\"title\":\"event timestamp ranges\",\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":true,\"totalFunc\":\"sum\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"range\",\"schema\":\"bucket\",\"params\":{\"field\":\"event_ts\",\"ranges\":[{\"from\":0,\"to\":1535510033255000000},{\"from\":1535510033255000000,\"to\":null}],\"customLabel\":\"Before\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"generate*\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[]}"
+      }
+    }
+  }
+]

@@ -32,5 +32,7 @@ docker exec -t kx-connect kafka-topics --zookeeper zookeeper:2181 --delete --top
 ### Get Docker host IP
 `ifconfig | grep -e "inet "` 
 
+
+##
 ### Clean up datagen
-docker stop kx-datagen && docker cp cleanup.sh kx-connect:/tmp; docker exec -t kx-connect /tmp/cleanup.sh && rm /tmp/cleanup.sh
+docker stop kx-datagen && docker cp cleanup.sh kx-connect:/tmp; docker exec -t kx-connect bash -c "/tmp/cleanup.sh && rm /tmp/cleanup.sh"

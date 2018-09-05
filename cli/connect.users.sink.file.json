@@ -9,6 +9,6 @@
 		"file": "/tmp/kafka-file-sink.txt",
 		  
 		"_comment": "Which topic(s) to write data from",
-		"topics": "users"
+		"topics": "users,generator-sales"
 	}
 }
